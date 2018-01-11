@@ -9,19 +9,19 @@ export class Guid {
         return guid && (guid instanceof Guid || Guid.validator.test(value));
     }
 
-    public static create() {
+    public static create(): Guid {
         return new Guid([Guid.gen(2), Guid.gen(1), Guid.gen(1), Guid.gen(1), Guid.gen(3)].join("-"));
     }
 
-    public static createEmpty() {
+    public static createEmpty(): Guid {
         return new Guid("emptyguid");
     }
 
-    public static parse(guid: string) {
+    public static parse(guid: string): Guid {
         return new Guid(guid);
     }
 
-    public static raw() {
+    public static raw(): string {
         return [Guid.gen(2), Guid.gen(1), Guid.gen(1), Guid.gen(1), Guid.gen(3)].join("-");
     }
 

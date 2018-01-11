@@ -52,4 +52,14 @@ describe("Guid test", () => {
         expect(Guid.parse(right).equals(Guid.parse(right))).equal(true);
     });
 
+    it("Should be unique value", () => {        
+        const guids = [];
+        for (let index = 0; index < 3000; index++) {
+            guids.push(Guid.create());
+        }
+        expect(guids.indexOf(guids[0]) < 0).equal(false);
+        
+        expect(guids.indexOf(Guid.create()) < 0).equal(true);
+    });
+
 });
