@@ -22,7 +22,7 @@ Guid.create() ==> b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
 |---|---|---|---|
 | static isGuid (guid: any): boolean | check if value is a guid code | OK | Ready |
 | static create ( ): Guid | create new guid | OK | Ready |
-| static createEmpty( ): Guid | create guid empty | OK | Ready |
+| static createEmpty ( ): Guid | create guid empty | OK | Ready |
 | static parse (guid: string): Guid | given a guid code create a Guid instance  | OK | Ready |
 | static raw ( ): string | create a guid code in string format  | OK | Ready |
 | equals (other: Guid): boolean | compare guid  | OK | Ready |
