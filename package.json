@@ -1,0 +1,23 @@
+{
+  "name": "guid-typescript",
+  "version": "1.0.0",
+  "description": "Generate guid with typescript",
+  "main": "index.js",
+  "scripts": {
+    "verify": ".\\node_modules\\.bin\\tslint .\\src\\**",
+    "test": "npm run verify && mocha -r ts-node/register tests/*.spec.ts"
+  },
+  "author": "nicolas",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.1.0",
+    "@types/mocha": "^2.2.46",
+    "@types/node": "^9.3.0",
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
+    "tslint": "^5.8.0",
+    "ts-node": "^4.1.0",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {}
+}
