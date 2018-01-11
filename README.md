@@ -6,7 +6,7 @@ Guid Typescript is library that let you generate guid code
 ### Instalation
 
 ```
-npm i fluent-validator-typescript --save
+npm i guid-typescript --save
 ```
 
 ### Basic usage
