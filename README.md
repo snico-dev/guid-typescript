@@ -1,6 +1,6 @@
 # Guid Typescript
 
-Guid Typescript is library that let you generate guid
+Guid Typescript is library that let you generate guid code
 
 ## Instalation and usage
 ### Instalation
