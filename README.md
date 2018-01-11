@@ -1,4 +1,4 @@
-# Fluent Validator Typescript
+# Guid Typescript
 
 Guid Typescript is library that let you generate guid
 
