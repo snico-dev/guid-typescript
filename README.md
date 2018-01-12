@@ -12,8 +12,14 @@ npm i guid-typescript --save
 ### Basic usage
 
 ```
-Guid.create() ==> b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
+import { Guid } from "guid-typescript";
 
+export class Exemple {
+    public id: Guid;
+    constructor() {
+        this.id = Guid.create(); ==> b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
+    }
+}
 ```
 
 ## Props and Methods
