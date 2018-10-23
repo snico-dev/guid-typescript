@@ -1,6 +1,6 @@
 import { assert, expect } from "chai";
 import "mocha";
-import { Guid } from "../src/guid";
+import { Guid } from "../lib/guid";
 
 describe("Guid test", () => {
     

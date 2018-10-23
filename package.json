@@ -1,6 +1,6 @@
 {
   "name": "guid-typescript",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Guid generator to typescript",
   "scripts": {
     "verify": ".\\node_modules\\.bin\\tslint .\\src\\**",
@@ -14,11 +14,8 @@
     "guid",
     "identifier"
   ],
-  "main": "dist/guid.js",
-  "es2015": "src/guid.ts",
-  "typescript": {
-    "definition": "dist/guid.d.ts"
-  },
+  "main": "./dist/lib/guid.js",
+  "types": "./dist/lib/guid.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/NicolasDeveloper/guid-typescript"
@@ -33,5 +30,6 @@
     "ts-node": "^4.1.0",
     "typescript": "^2.6.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "files": [ "/dist/" ]
 }
