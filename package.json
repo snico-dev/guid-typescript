@@ -14,8 +14,8 @@
     "guid",
     "identifier"
   ],
-  "main": "./dist/lib/guid.js",
-  "types": "./dist/lib/guid.d.ts",
+  "main": "./dist/guid.js",
+  "types": "./dist/guid.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/NicolasDeveloper/guid-typescript"
