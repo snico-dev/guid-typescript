@@ -62,4 +62,12 @@ describe("Guid test", () => {
         expect(guids.indexOf(Guid.create()) < 0).equal(true);
     });
 
+    it('Should compare guids ignoring case', () => {
+        const lowerCaseGuid: Guid = Guid.parse('00000001-0001-5365-7276-70726f496e63');
+        const upperCaseGuid: Guid = Guid.parse('00000001-0001-5365-7276-70726F496E63');
+    
+        const areEqual = lowerCaseGuid.equals(upperCaseGuid);
+    
+        expect(areEqual).equal(true);
+    });
 });

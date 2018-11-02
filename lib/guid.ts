@@ -49,7 +49,7 @@ export class Guid {
     public equals(other: Guid): boolean {
         // Comparing string `value` against provided `guid` will auto-call
         // toString on `guid` for comparison
-        return Guid.isGuid(other) && this.value === other.toString();
+        return Guid.isGuid(other) && this.value.toUpperCase() === other.toString().toUpperCase();
     }
 
     public isEmpty(): boolean {
