@@ -42,7 +42,7 @@ export class Guid {
         this.value = Guid.EMPTY;
 
         if (guid && Guid.isGuid(guid)) {
-            this.value = guid;
+            this.value = guid.toLowerCase();
         }
     }
 
