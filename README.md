@@ -1,9 +1,9 @@
 # Guid Typescript
 
-Guid Typescript is library that let you generate guid code
+Guid Typescript is a library that lets you generate guid code
 
-## Instalation and usage
-### Instalation
+## Installation and usage
+### Installation
 
 ```
 npm i guid-typescript --save
@@ -28,8 +28,8 @@ export class Example {
 |---|---|---|---|
 | static isGuid (guid: any): boolean | Check if value is a guid code | OK | Ready |
 | static create ( ): Guid | Create a new guid | OK | Ready |
-| static createEmpty ( ): Guid | Create a guid empty | OK | Ready |
-| static parse (guid: string): Guid | Given a guid code in string format, so create a guid instance  | OK | Ready |
+| static createEmpty ( ): Guid | Create an empty guid | OK | Ready |
+| static parse (guid: string): Guid | Creates a guid instance from a given guid as string  | OK | Ready |
 | static raw ( ): string | Create a guid code in string format  | OK | Ready |
 | equals (other: Guid): boolean | Compare a guid code | OK | Ready |
 | isEmpty ( ): boolean | Validate if a guid is empty  | OK | Ready |
