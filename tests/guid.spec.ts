@@ -2,9 +2,10 @@ import { assert, expect } from "chai";
 import "mocha";
 import { Guid } from "../lib/guid";
 
-describe("Guid test", () => {
-    
-    it("Should create a guid", () => {
+describe("Guid", () => {    
+    const exampleGuid = "0315642c-a069-9f3e-1852-9adf2d075b93";
+
+    it("Should create & validate a random guid", () => {
         const wrong = "wrongguid";
         expect(Guid.isGuid(wrong)).equal(false);
 
@@ -12,15 +13,14 @@ describe("Guid test", () => {
         expect(Guid.isGuid(right)).equal(true);
     });
 
-    it("Should raw a guid", () => {
+    it("Should parse & validate a guid", () => {
         const wrong = "wrongguid";
         expect(Guid.isGuid(wrong)).equal(false);
 
-        const right = Guid.raw();
-        expect(Guid.isGuid(right)).equal(true);
+        expect(Guid.isGuid(exampleGuid)).equal(true);
     });
 
-    it("Should compare another guid", () => {
+    it("Should compare to another guid", () => {
         const wrong = Guid.create();
         expect(wrong.equals(Guid.create())).equal(false);
         
@@ -28,31 +28,7 @@ describe("Guid test", () => {
         expect(right.equals(right)).equal(true);
     });
 
-    it("Should compare another guid empty", () => {
-        const wrong = Guid.createEmpty(); 
-        expect(wrong.equals(Guid.create())).equal(false);
-        
-        const right = Guid.createEmpty();
-        expect(right.equals(Guid.createEmpty())).equal(true);
-    });
-
-    it("Should verify if is guid", () => {
-        const wrong = "wrong guid";
-        expect(Guid.isGuid(wrong)).equal(false);
-        
-        const right = Guid.create();
-        expect(Guid.isGuid(right)).equal(true);
-    });
-
-    it("Should parse a guid", () => {
-        const wrong = Guid.raw();
-        expect(Guid.parse(wrong).equals(Guid.create())).equal(false);
-        
-        const right = Guid.raw();
-        expect(Guid.parse(right).equals(Guid.parse(right))).equal(true);
-    });
-
-    it("Should be unique value", () => {        
+    it("Should be unique value", () => {
         const guids = [];
         for (let index = 0; index < 3000; index++) {
             guids.push(Guid.create());
@@ -62,4 +38,11 @@ describe("Guid test", () => {
         expect(guids.indexOf(Guid.create()) < 0).equal(true);
     });
 
+    it("Should create nulled GUIDs & return them as string", () => {
+        expect(Guid.createEmpty().toString()).equal(Guid.EMPTY);
+    });
+
+    it("Should return valid JSON", () => {
+        expect(Guid.create(exampleGuid).toJSON()).to.eql({ value: exampleGuid });
+    });
 });
