@@ -1,7 +1,7 @@
 {
   "name": "guid-typescript",
-  "version": "1.0.8",
-  "description": "Guid generator to typescript",
+  "version": "1.1.0",
+  "description": "Guid wrapper class for typescript",
   "scripts": {
     "verify": ".\\node_modules\\.bin\\tslint .\\lib\\**",
     "test": "npm run verify && mocha -r ts-node/register tests/*.spec.ts",
