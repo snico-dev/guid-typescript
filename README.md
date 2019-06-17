@@ -1,6 +1,6 @@
-# Guid Typescript
-
-Guid Typescript is a library that lets you generate/parse/compare/validate globally unique IDs(GUIDs)
+# GUIDs for Typescript
+[![Build Status](https://travis-ci.com/gekkedev/guid-typescript.svg?branch=master)](https://travis-ci.com/gekkedev/guid-typescript)
+This library serves as type definition for globally unique IDs(GUIDs) in Typescript and therefore helps to generate/parse/compare/validate.
 
 ## Installation and usage
 ### Installation
