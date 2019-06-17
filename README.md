@@ -1,6 +1,5 @@
-# Guid Typescript
-
-Guid Typescript is a library that lets you generate guid code
+# GUIDs for Typescript
+[![Build Status](https://travis-ci.com/gekkedev/guid-typescript.svg?branch=master)](https://travis-ci.com/gekkedev/guid-typescript)
 
 ## Installation and usage
 ### Installation
