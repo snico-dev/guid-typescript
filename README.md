@@ -1,16 +1,20 @@
-# GUIDs for Typescript
+# Easy GUIDs for Typescript (ez-guid)
 [![Build Status](https://travis-ci.com/gekkedev/guid-typescript.svg?branch=master)](https://travis-ci.com/gekkedev/guid-typescript)
-This library serves as type definition for globally unique IDs(GUIDs) in Typescript and therefore helps to generate/parse/compare/validate.
+This library serves as type definition for globally unique IDs(GUIDs) in Typescript and therefore provides interfaces to generate/parse/compare/validate them.
 
-## Installation and usage
+## Getting started
 ### Installation
 
 ```
-npm i guid-typescript --save
+npm i guid-typescript
+```
+  
+For NPM version < 5
+```
+npm install guid-typescript --save
 ```
 
-### Basic usage
-
+### Instantiation
 ```typescript
 import { Guid } from "guid-typescript";
 
@@ -24,12 +28,12 @@ export class Example {
 
 ## Props and Methods
 
-| Method/Prop | Description | Test | Status |
-|---|---|---|---|
-| static isGuid (guid: any): boolean | Check if value is a guid code | OK | Ready |
-| static create (guid?: string): Guid | Creates a new guid instance; random if no param given | OK | Ready |
-| static createEmpty ( ): Guid | Create an empty guid | OK | Ready |
-| equals (other: Guid): boolean | Compare a guid code | OK | Ready |
-| isEmpty ( ): boolean | Validate if a guid is empty  | OK | Ready |
-| toString ( ): string | Parse a guid instance to string format  | OK | Ready |
-| toJSON ( ): any | Parse to JSON format  | OK | Ready |
+| Method/Prop | Description|
+|---|---|
+| static isGuid (guid: any): boolean | Check if value is a guid code |
+| static create (guid?: string): Guid | Creates a new Guid instance; random if no param given |
+| static createEmpty ( ): Guid | Create an empty guid |
+| equals (other: Guid): boolean | Compares two Guid instances with each other |
+| isEmpty ( ): boolean | Validate if a guid is empty  |
+| toString ( ): string | Parse a guid instance to string format  |
+| toJSON ( ): any | Parse to JSON format  |
