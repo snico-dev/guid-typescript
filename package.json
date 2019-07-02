@@ -1,24 +1,24 @@
 {
-  "name": "guid-typescript",
-  "version": "1.1.0",
-  "description": "Guid wrapper class for typescript",
+  "name": "ez-guid",
+  "version": "1.0.0",
+  "description": "Easy GUID type implementation for Typescript",
   "scripts": {
     "verify": ".\\node_modules\\.bin\\tslint .\\lib\\**",
     "test": "npm run verify && mocha -r ts-node/register tests/*.spec.ts",
     "build": ".\\node_modules\\.bin\\tsc lib/guid -t es3 -m commonjs -d --outDir dist"
   },
-  "author": "nicolas",
-  "license": "ISC",
+  "author": "ez-libs",
   "keywords": [
     "typescript",
     "guid",
-    "identifier"
+    "uuid"
+    "type"
   ],
   "main": "./dist/guid.js",
   "types": "./dist/guid.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NicolasDeveloper/guid-typescript"
+    "url": "https://github.com/ez-libs/ez-guid"
   },
   "devDependencies": {
     "@types/chai": "^4.1.0",
