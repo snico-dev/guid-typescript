@@ -5,4 +5,4 @@ deploy:
   provider: npm
   api_key: ${API_TOKEN}
     on:
-    branch: production
+    branch: master
