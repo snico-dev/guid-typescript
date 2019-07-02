@@ -11,7 +11,7 @@
   "keywords": [
     "typescript",
     "guid",
-    "uuid"
+    "uuid",
     "type"
   ],
   "main": "./dist/guid.js",
