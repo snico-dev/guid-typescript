@@ -1,6 +1,6 @@
 # GUIDs for Typescript
-[![Build Status](https://travis-ci.com/gekkedev/guid-typescript.svg?branch=master)](https://travis-ci.com/gekkedev/guid-typescript)
-This library serves as type definition for globally unique IDs(GUIDs) in Typescript and therefore helps to generate/parse/compare/validate.
+[![Build Status](https://travis-ci.com/ez-libs/ez-guid.svg?branch=master)](https://travis-ci.com/ez-libs/ez-guid)  
+This library serves as type definition for globally unique IDs(GUIDs) in Typescript and therefore helps to generate/parse/compare/validate them.
 
 ## Installation and usage
 ### Installation
