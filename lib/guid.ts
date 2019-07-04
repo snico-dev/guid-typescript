@@ -28,7 +28,7 @@ export class Guid {
 
     private value: string = Guid.EMPTY;
 
-    private constructor(guid?: string) {
+    constructor(guid?: string) {
         if (guid && Guid.isValid(guid)) {
             this.value = guid.toLowerCase();
         }
