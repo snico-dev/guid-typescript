@@ -7,22 +7,22 @@ The library ez-guid serves as type definition for globally unique IDs(GUIDs) in 
 ### Installation
 
 ```
-npm i guid-typescript
+npm i ez-guid
 ```
   
 For NPM version < 5
 ```
-npm install guid-typescript --save
+npm install ez-guid --save
 ```
 
 ### Instantiation
 ```typescript
-import { Guid } from "guid-typescript";
+import { Guid } from "ez-guid";
 
 export class Example {
     public id: Guid;
     constructor() {
-        this.id = Guid.create(); // ==> b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
+        this.id = Guid.create(); // ==> e.g. b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
     }
 }
 ```
