@@ -30,13 +30,13 @@ export class Guid {
 
     private constructor(guid?: string) {
         if (guid && Guid.isValid(guid)) {
-            this.value = guid;
+            this.value = guid.toLowerCase();
         }
     }
 
     /** Compares one Guid instance with another */
     public equals(other: Guid): boolean {
-        return Guid.isValid(other) && this.value === other.toString();
+        return Guid.isValid(other) && this.value === other.toString().toLowerCase();
     }
 
     public isEmpty(): boolean {
