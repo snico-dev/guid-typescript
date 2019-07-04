@@ -3,7 +3,7 @@ import "mocha";
 import { Guid } from "../lib/guid";
 
 describe("Guid", () => {    
-    const exampleGuid = "0315642c-a069-9f3e-1852-9adf2d075b93";
+    const exampleGuid: string = "0315642c-a069-9f3e-1852-9adf2d075b93";
 
     it("should create & validate a random guid", () => {
         const wrong = "wrongguid";
@@ -41,5 +41,11 @@ describe("Guid", () => {
 
     it("should create nulled GUIDs & return them as string", () => {
         expect(Guid.createEmpty().toString()).equal(Guid.EMPTY);
+    });
+
+    it("should not care about GUID case at all", () => {
+        const upperCaseGuid: Guid = new Guid(exampleGuid.toUpperCase());
+        const lowerCaseGuid: Guid = Guid.create(exampleGuid);
+        expect(upperCaseGuid.equals(lowerCaseGuid)).equal(true);
     });
 });
