@@ -7,17 +7,17 @@ describe("Guid", () => {
 
     it("should create & validate a random guid", () => {
         const wrong = "wrongguid";
-        expect(Guid.isGuid(wrong)).equal(false);
+        expect(Guid.isValid(wrong)).equal(false);
 
         const right = Guid.create();
-        expect(Guid.isGuid(right)).equal(true);
+        expect(Guid.isValid(right)).equal(true);
     });
 
     it("should parse & validate a guid", () => {
         const wrong = "wrongguid";
-        expect(Guid.isGuid(wrong)).equal(false);
+        expect(Guid.isValid(wrong)).equal(false);
 
-        expect(Guid.isGuid(exampleGuid)).equal(true);
+        expect(Guid.isValid(exampleGuid)).equal(true);
     });
 
     it("should compare GUID instances to another", () => {
@@ -41,9 +41,5 @@ describe("Guid", () => {
 
     it("should create nulled GUIDs & return them as string", () => {
         expect(Guid.createEmpty().toString()).equal(Guid.EMPTY);
-    });
-
-    it("should return valid JSON", () => {
-        expect(Guid.create(exampleGuid).toJSON()).to.eql({ value: exampleGuid });
     });
 });
