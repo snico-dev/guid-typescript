@@ -3,6 +3,6 @@ node_js:
  - "node"
 deploy:
   provider: npm
-  api_key: $API_TOKEN
+  api_key: $NPM_TOKEN
   on:
     branch: master
