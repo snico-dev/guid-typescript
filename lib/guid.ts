@@ -1,7 +1,7 @@
 export class Guid {
     public static EMPTY = "00000000-0000-0000-0000-000000000000";
 
-    public static isGuid(guid: any) {
+    public static isValid(guid: any) {
         const value: string = guid.toString();
         return guid && (guid instanceof Guid || Guid.validator.test(value));
     }
@@ -28,15 +28,15 @@ export class Guid {
 
     private value: string = Guid.EMPTY;
 
-    private constructor(guid?: string) {
-        if (guid && Guid.isGuid(guid)) {
-            this.value = guid;
+    constructor(guid?: string) {
+        if (guid && Guid.isValid(guid)) {
+            this.value = guid.toLowerCase();
         }
     }
 
     /** Compares one Guid instance with another */
     public equals(other: Guid): boolean {
-        return Guid.isGuid(other) && this.value === other.toString();
+        return Guid.isValid(other) && this.value === other.toString().toLowerCase();
     }
 
     public isEmpty(): boolean {
@@ -45,11 +45,5 @@ export class Guid {
 
     public toString(): string {
         return this.value;
-    }
-
-    public toJSON(): any {
-        return {
-            value: this.value,
-        };
     }
 }
