@@ -1,35 +1,40 @@
-# GUIDs for Typescript
-[![Build Status](https://travis-ci.com/ez-libs/ez-guid.svg?branch=master)](https://travis-ci.com/ez-libs/ez-guid)  
-This library serves as type definition for globally unique IDs(GUIDs) in Typescript and therefore helps to generate/parse/compare/validate them.
+# Easy GUIDs for Typescript (ez-guid)
+[![Build Status](https://travis-ci.com/ez-libs/ez-guid.svg?branch=master)](https://travis-ci.com/ez-libs/ez-guid)
+[![npm version](https://badge.fury.io/js/ez-guid.svg)](https://badge.fury.io/js/ez-guid)  
+The library ez-guid serves as type definition for globally unique IDs(GUIDs) in Typescript and therefore provides interfaces to generate/parse/compare/validate them.
 
-## Installation and usage
+## Getting started
 ### Installation
 
 ```
-npm i guid-typescript --save
+npm i ez-guid
+```
+  
+For NPM version < 5
+```
+npm install ez-guid --save
 ```
 
-### Basic usage
-
+### Instantiation
 ```typescript
-import { Guid } from "guid-typescript";
+import { Guid } from "ez-guid";
 
 export class Example {
     public id: Guid;
     constructor() {
-        this.id = Guid.create(); // ==> b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
+        this.id = Guid.create(); // ==> e.g. b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
     }
 }
 ```
 
 ## Props and Methods
 
-| Method/Prop | Description | Test | Status |
-|---|---|---|---|
-| static isGuid (guid: any): boolean | Check if value is a guid code | OK | Ready |
-| static create (guid?: string): Guid | Creates a new guid instance; random if no param given | OK | Ready |
-| static createEmpty ( ): Guid | Create an empty guid | OK | Ready |
-| equals (other: Guid): boolean | Compare a guid code | OK | Ready |
-| isEmpty ( ): boolean | Validate if a guid is empty  | OK | Ready |
-| toString ( ): string | Parse a guid instance to string format  | OK | Ready |
-| toJSON ( ): any | Parse to JSON format  | OK | Ready |
+| Method/Prop | Description|
+|---|---|
+| static isGuid (guid: any): boolean | Check if value is a guid code |
+| static create (guid?: string): Guid | Creates a new Guid instance; random if no param given |
+| static createEmpty ( ): Guid | Create an empty guid |
+| equals (other: Guid): boolean | Compares two Guid instances with each other |
+| isEmpty ( ): boolean | Validate if a guid is empty  |
+| toString ( ): string | Parse a guid instance to string format  |
+| toJSON ( ): any | Parse to JSON format  |
