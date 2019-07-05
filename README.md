@@ -16,13 +16,32 @@ npm install ez-guid --save
 ```
 
 ### Instantiation
+#### Random GUID
 ```typescript
 import { Guid } from "ez-guid";
 
 export class Example {
     public id: Guid;
     constructor() {
-        this.id = Guid.create(); // ==> e.g. b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
+        //using the static method
+        this.id = Guid.create(); // ==> random GUID, e.g. b77d409a-10cd-4a47-8e94-b0cd0ab50aa1
+        //using the provided constructor
+        this.id = new Guid(); //random aswell
+    }
+}
+```
+
+#### GUID string
+```typescript
+import { Guid } from "ez-guid";
+
+export class Example {
+    public id: Guid;
+    constructor() {
+        //using the static method
+        this.id = Guid.create("b77d409a-10cd-4a47-8e94-b0cd0ab50aa1");
+        //using the provided constructor
+        this.id = new Guid("b77d409a-10cd-4a47-8e94-b0cd0ab50aa1");
     }
 }
 ```
@@ -31,10 +50,9 @@ export class Example {
 
 | Method/Prop | Description|
 |---|---|
-| static isGuid (guid: any): boolean | Check if value is a guid code |
+| static isValid (guid: any): boolean | Check if value is a guid code |
 | static create (guid?: string): Guid | Creates a new Guid instance; random if no param given |
 | static createEmpty ( ): Guid | Create an empty guid |
 | equals (other: Guid): boolean | Compares two Guid instances with each other |
 | isEmpty ( ): boolean | Validate if a guid is empty  |
 | toString ( ): string | Parse a guid instance to string format  |
-| toJSON ( ): any | Parse to JSON format  |
