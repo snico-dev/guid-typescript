@@ -1,1 +1,8 @@
+#dirs
+.vscode
+lib
+tests
 
+#files
+tsconfig.json      
+tslint.json
