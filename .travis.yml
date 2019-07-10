@@ -1,6 +1,10 @@
 language: node_js
 node_js:
  - "node"
+script:
+ - npm test
+ - npm build
+cache: npm
 before_deploy: "npm run build"
 deploy:
   provider: npm
