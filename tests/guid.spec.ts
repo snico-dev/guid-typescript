@@ -1,35 +1,54 @@
-import { assert, expect } from "chai";
+import { expect } from "chai";
 import "mocha";
 import { Guid } from "../lib/guid";
 
-describe("Guid", () => {    
-    const exampleGuid: string = "0315642c-a069-9f3e-1852-9adf2d075b93";
+describe("Guid", () => {
+    const example_hyphen: string = "0315642c-a069-9f3e-1852-9adf2d075b93";
+    const example_no_hyphen: string = "0315642ca0699f3e18529adf2d075b93";
 
-    it("should create & validate a random guid", () => {
+    it("should create & validate a random GUID", () => {
         const wrong: string = "wrongguid";
         expect(Guid.isValid(wrong)).equal(false);
 
-        const right: Guid = Guid.create();
-        expect(Guid.isValid(right)).equal(true);
+        const static_guid: Guid = Guid.create();
+        expect(Guid.isValid(static_guid)).equal(true); //vaid?
+        expect(static_guid.toString()).not.equal(Guid.EMPTY); //not null?
+
+        const dynamic_guid: Guid = new Guid();
+        expect(Guid.isValid(dynamic_guid)).equal(true); //vaid?
+        expect(dynamic_guid.toString()).not.equal(Guid.EMPTY); //not null?
     });
 
-    it("should parse & validate a guid", () => {
+    it("should parse & validate a GUID", () => {
         const wrong: string = "wrongguid";
         expect(Guid.isValid(wrong)).equal(false);
 
-        expect(Guid.isValid(exampleGuid)).equal(true);
+        expect(Guid.isValid(example_hyphen)).equal(true);
+    });
+
+    it("should create nulled GUIDs & return them as a string", () => {
+        expect(Guid.createEmpty().toString()).equal(Guid.EMPTY);
+    });
+
+    it("should parse non-hyphenated GUIDs & return them in the more readable RFC 4122 format", () => {
+        expect(Guid.create(example_no_hyphen).toString()).equal(example_hyphen);
+        expect(new Guid(example_no_hyphen).toString()).equal(example_hyphen); //same, but using the constructor
+    });
+
+    it("should convert GUIDs to non-hyphenated GUIDs", () => {
+        expect(Guid.create(example_hyphen).toShortString()).equal(example_no_hyphen);
     });
 
     it("should compare GUID instances to another", () => {
-        const wrong: Guid = Guid.create();
-        expect(wrong.equals(Guid.create())).equal(false);
+        const wrong_guid: Guid = Guid.create();
+        expect(wrong_guid.equals(Guid.create())).equal(false);
         
-        const right: Guid = Guid.create(exampleGuid);
-        const duplicate: Guid = Guid.create(exampleGuid);
-        expect(right.equals(duplicate)).equal(true);
+        const correct_guid: Guid = Guid.create(example_hyphen);
+        const duplicate_guid: Guid = Guid.create(example_hyphen);
+        expect(correct_guid.equals(duplicate_guid)).equal(true);
     });
 
-    it("should be unique value", () => {
+    it("should generate unique GUIDs only", () => {
         const guids: Array<Guid> = [];
         for (let index: number = 0; index < 3000; index++) {
             guids.push(Guid.create());
@@ -39,13 +58,9 @@ describe("Guid", () => {
         expect(guids.indexOf(Guid.create()) < 0).equal(true);
     });
 
-    it("should create nulled GUIDs & return them as string", () => {
-        expect(Guid.createEmpty().toString()).equal(Guid.EMPTY);
-    });
-
     it("should not care about GUID case at all", () => {
-        const upperCaseGuid: Guid = new Guid(exampleGuid.toUpperCase());
-        const lowerCaseGuid: Guid = Guid.create(exampleGuid);
+        const upperCaseGuid: Guid = new Guid(example_hyphen.toUpperCase());
+        const lowerCaseGuid: Guid = Guid.create(example_hyphen);
         expect(upperCaseGuid.equals(lowerCaseGuid)).equal(true);
     });
 });
