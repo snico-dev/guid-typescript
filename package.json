@@ -1,6 +1,6 @@
 {
   "name": "ez-guid",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Easy GUID type implementation for Typescript",
   "scripts": {
     "verify": ".\\node_modules\\.bin\\tslint .\\lib\\**",
