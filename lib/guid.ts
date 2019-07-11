@@ -39,7 +39,7 @@ export class Guid {
     constructor(guid?: string) {
         if (guid && Guid.isValid(guid)) { //hyphenated, no conversion necessary
             this.value = guid.toLowerCase();
-        } else if (guid && !guid.includes("-") && guid.length == 32) { //non-hyphenated
+        } else if (guid && !(guid.indexOf("-") >= 0) && guid.length == 32) { //non-hyphenated
             let tempGuid: string = "";
             let pos: number = 0;
 
