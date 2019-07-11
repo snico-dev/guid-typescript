@@ -5,11 +5,19 @@ script:
  - npm test
  - npm run build
 cache: npm
+
 #before_deploy: "npm run build"
 deploy:
+  #npmjs.org tarball upload
   provider: npm
   skip_cleanup: true
   api_key: $NPM_TOKEN
   email: $NPM_EMAIL
+  on:
+    branch: master
+  #GitHub release upload
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  skip_cleanup: true
   on:
     branch: master
