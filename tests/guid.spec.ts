@@ -23,10 +23,10 @@ describe("Guid", () => {
         const text: string = "random test string";
 
         //method 1: static instantiation
-        expect(() => Guid.create(text)).to.throw("TypeError");
+        expect(() => Guid.create(text)).to.throw(TypeError);
 
         //method 2: directly using the constructor
-        expect(() => new Guid(text)).to.throw("TypeError");
+        expect(() => new Guid(text)).to.throw(TypeError);
     });
 
     it("should parse & validate a GUID", () => {
