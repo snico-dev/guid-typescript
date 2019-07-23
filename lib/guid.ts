@@ -49,7 +49,9 @@ export class Guid {
                 pos += i;
             }
             this.value = tempGuid;
-        } else this.value = Guid.random();
+        } else if (!guid) {
+            this.value = Guid.random();
+        } else throw new TypeError("No valid GUID string given; cannot instantiate!")
     }
 
     /** Compares one Guid instance with another */
