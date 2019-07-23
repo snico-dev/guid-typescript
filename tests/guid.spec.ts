@@ -11,12 +11,22 @@ describe("Guid", () => {
         expect(Guid.isValid(wrong)).equal(false);
 
         const static_guid: Guid = Guid.create();
-        expect(Guid.isValid(static_guid)).equal(true); //vaid?
+        expect(Guid.isValid(static_guid)).equal(true); //valid?
         expect(static_guid.toString()).not.equal(Guid.EMPTY); //not null?
 
         const dynamic_guid: Guid = new Guid();
-        expect(Guid.isValid(dynamic_guid)).equal(true); //vaid?
+        expect(Guid.isValid(dynamic_guid)).equal(true); //valid?
         expect(dynamic_guid.toString()).not.equal(Guid.EMPTY); //not null?
+    });
+
+    if("should not instantiate itself if the input value is invalid", () => {
+        const text: string = "random test string";
+
+        //method 1: static instantiation
+        expect(typeof(Guid.create(text))).not.equal("Guid");
+
+        //method 2: directly using the constructor
+        expect(typeof(new Guid(text))).not.equal("Guid");
     });
 
     it("should parse & validate a GUID", () => {
