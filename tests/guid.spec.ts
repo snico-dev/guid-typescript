@@ -19,7 +19,7 @@ describe("Guid", () => {
         expect(dynamic_guid.toString()).not.equal(Guid.EMPTY); //not null?
     });
 
-    if("should not instantiate itself if the input value is invalid", () => {
+    it("should not instantiate itself if the input value is invalid", () => {
         const text: string = "random test string";
 
         //method 1: static instantiation
