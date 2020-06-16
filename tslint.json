@@ -2,17 +2,26 @@
     "extends": "tslint:recommended",
     "rules": {
         "max-line-length": {
-            "options": [400]
+            "options": [
+                400
+            ]
         },
         "new-parens": true,
         "no-arg": true,
         "eofline": false,
         "no-trailing-whitespace": false,
-        "no-bitwise": true,
         "no-empty-interface": false,
         "no-conditional-assignment": true,
         "no-consecutive-blank-lines": false,
-        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+        "label-position": false,
+        "no-unused-expression": false,
+        "no-bitwise": false,
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-leading-underscore"
+        ],
         "no-console": {
             "severity": "warning",
             "options": [
@@ -27,7 +36,9 @@
     },
     "jsRules": {
         "max-line-length": {
-            "options": [120]
+            "options": [
+                120
+            ]
         }
     }
 }
