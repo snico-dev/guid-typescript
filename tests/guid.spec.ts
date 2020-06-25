@@ -7,13 +7,12 @@ describe("Guid", () => {
     const example_no_hyphen: string = "0315642ca0699f3e18529adf2d075b93";
 
     it("should create & validate a random GUID", () => {
-        const wrong: string = "wrongguid";
-        expect(Guid.isValid(wrong)).equal(false);
-
+        //generated guid using the static construction method
         const static_guid: Guid = Guid.create();
         expect(Guid.isValid(static_guid)).equal(true); //valid?
         expect(static_guid.toString()).not.equal(Guid.EMPTY); //not null?
 
+        //generated guid using the constructor; same expectation here
         const dynamic_guid: Guid = new Guid();
         expect(Guid.isValid(dynamic_guid)).equal(true); //valid?
         expect(dynamic_guid.toString()).not.equal(Guid.EMPTY); //not null?
@@ -29,11 +28,19 @@ describe("Guid", () => {
         expect(() => new Guid(text)).to.throw(TypeError);
     });
 
-    it("should parse & validate a GUID", () => {
+    it("should parse & validate GUIDs", () => {
         const wrong: string = "wrongguid";
-        expect(Guid.isValid(wrong)).equal(false);
 
-        expect(Guid.isValid(example_hyphen)).equal(true);
+        expect(Guid.isValid(wrong)).equal(false); //must return false, no exception
+        expect(Guid.isValid(example_hyphen)).equal(true); //valid?
+        expect(Guid.isValid(example_no_hyphen)).equal(true); //non-hyphenated guid. also valid?
+        expect(Guid.isValid(example_no_hyphen + wrong)).equal(false); //valid guid plus one char. invalid?
+        //@ts-ignore
+        expect(Guid.isValid(undefined)).equal(false);
+        //@ts-ignore
+        expect(Guid.isValid(null)).equal(false);
+        //@ts-ignore
+        expect(Guid.isValid(123456789)).equal(false);
     });
 
     it("should create nulled GUIDs & return them as a string", () => {
@@ -52,7 +59,7 @@ describe("Guid", () => {
     it("should compare GUID instances to another", () => {
         const wrong_guid: Guid = Guid.create();
         expect(wrong_guid.equals(Guid.create())).equal(false);
-        
+
         const correct_guid: Guid = Guid.create(example_hyphen);
         const duplicate_guid: Guid = Guid.create(example_hyphen);
         expect(correct_guid.equals(duplicate_guid)).equal(true);
@@ -64,7 +71,7 @@ describe("Guid", () => {
             guids.push(Guid.create());
         }
         expect(guids.indexOf(guids[0]) < 0).equal(false);
-        
+
         expect(guids.indexOf(Guid.create()) < 0).equal(true);
     });
 
