@@ -8,6 +8,12 @@ describe("Guid test", () => {
         const wrong = "wrongguid";
         expect(Guid.isGuid(wrong)).equal(false);
 
+        const invalid = "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz";
+        expect(Guid.isGuid(invalid)).equal(false);
+
+        const valid = "abcdef01-2345-6789-abcd-ef0123456789";
+        expect(Guid.isGuid(valid)).equal(true);
+
         const right = Guid.create();
         expect(Guid.isGuid(right)).equal(true);
     });
