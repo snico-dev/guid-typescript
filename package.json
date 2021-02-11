@@ -3,9 +3,9 @@
   "version": "1.2.4",
   "description": "Easy GUID type implementation for Typescript",
   "scripts": {
-    "verify": ".\\node_modules\\.bin\\tslint .\\lib\\**",
+    "verify": "npx tslint ./lib/**",
     "test": "npm run verify && mocha -r ts-node/register tests/*.spec.ts",
-    "build": ".\\node_modules\\.bin\\tsc lib/guid -t es3 -m commonjs -d --outDir dist"
+    "build": "npx tsc lib/guid -t es3 -m commonjs -d --outDir dist"
   },
   "author": "ez-libs",
   "contributors": [
