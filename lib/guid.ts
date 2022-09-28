@@ -46,8 +46,23 @@ export class Guid {
         return new Guid(guid);
     }
 
+  /**
+   * Generates a raw GUID/UUID string.
+   * @returns Raw v4 GUID/UUID string
+   */
     public static raw(): string {
-        return [Guid.gen(2), Guid.gen(1), Guid.gen(1), Guid.gen(1), Guid.gen(3)].join("-");
+    const version = Guid.gen(1).split('');
+    const variant = Guid.gen(1).split('');
+    /**
+     * First digit of the third nibble is always the version, 4
+     */
+    version[0] = Guid.VERSION;
+
+    /**
+     * First digit of the fourth nibble is one of [8, 9, a, b]
+     */
+    variant[0] = Guid.VARIANTS[Math.floor(Math.random() * Guid.VARIANTS.length)];
+    return [Guid.gen(2), Guid.gen(1), version.join(''), variant.join(''), Guid.gen(3)].join('-');
     }
 
     private static gen(count: number): string {
