@@ -27,6 +27,7 @@ export class Guid {
     'i'
   );
 
+  public static EMPTY = '00000000-0000-0000-0000-000000000000';
 
     public static isGuid(guid: any) {
         const value: string = guid.toString();
@@ -38,7 +39,7 @@ export class Guid {
     }
 
     public static createEmpty(): Guid {
-        return new Guid("emptyguid");
+    return new Guid('emptyguid');
     }
 
     public static parse(guid: string): Guid {
@@ -50,7 +51,7 @@ export class Guid {
     }
 
     private static gen(count: number): string {
-        let out: string = "";
+    let out: string = '';
         for (let i: number = 0; i < count; i++) {
             // tslint:disable-next-line:no-bitwise
             out += (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -61,7 +62,9 @@ export class Guid {
     private value: string;
 
     private constructor(guid: string) {
-        if (!guid) { throw new TypeError("Invalid argument; `guid` has no value."); }
+    if (!guid) {
+      throw new TypeError('Invalid argument; `guid` has no value.');
+    }
 
         this.value = Guid.EMPTY;
 
@@ -86,8 +89,8 @@ export class Guid {
 
     public toObject(): any {
         return {
-            value: this.value
-        }
+      value: this.value,
+    };
     }
 
     public toJSON(): any {
