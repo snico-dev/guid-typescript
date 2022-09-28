@@ -1,8 +1,32 @@
 export class Guid {
+  /**
+   * For random GUID/UUID values, the version field is 4
+   */
+  public static readonly VERSION = '4';
 
-    public static validator = new RegExp("^[a-z0-9]{8}-[a-z0-9]{4}-4[a-z0-9]{3}-[89ab][a-z0-9]{3}-[a-z0-9]{12}$", "i");
+  /**
+   * For random GUID/UUID values, the variant field is one of these values.
+   */
+  public static readonly VARIANTS = ['8', '9', 'a', 'b'];
 
-    public static EMPTY = "00000000-0000-0000-0000-000000000000";
+  /**
+   * Checks for valid hexadecimal notation and ensures that version
+   * and variant are valid according to  RFC 4122
+   * @see https://www.rfc-editor.org/rfc/rfc4122
+   */
+  public static readonly validator = new RegExp(
+    '^' +
+      [
+        '[a-z0-9]{8}',
+        '[a-z0-9]{4}',
+        `${Guid.VERSION}[a-z0-9]{3}`,
+        `[${Guid.VARIANTS.join('')}][a-z0-9]{3}`,
+        '[a-z0-9]{12}',
+      ].join('-') +
+      '$',
+    'i'
+  );
+
 
     public static isGuid(guid: any) {
         const value: string = guid.toString();
