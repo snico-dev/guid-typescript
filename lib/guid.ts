@@ -29,28 +29,28 @@ export class Guid {
 
   public static EMPTY = '00000000-0000-0000-0000-000000000000';
 
-    public static isGuid(guid: any) {
-        const value: string = guid.toString();
-        return guid && (guid instanceof Guid || Guid.validator.test(value));
-    }
+  public static isGuid(guid: any) {
+    const value: string = guid.toString();
+    return guid && (guid instanceof Guid || Guid.validator.test(value));
+  }
 
-    public static create(): Guid {
-        return new Guid(Guid.raw());
-    }
+  public static create(): Guid {
+    return new Guid(Guid.raw());
+  }
 
-    public static createEmpty(): Guid {
+  public static createEmpty(): Guid {
     return new Guid('');
-    }
+  }
 
-    public static parse(guid: string): Guid {
-        return new Guid(guid);
-    }
+  public static parse(guid: string): Guid {
+    return new Guid(guid);
+  }
 
   /**
    * Generates a raw GUID/UUID string.
    * @returns Raw v4 GUID/UUID string
    */
-    public static raw(): string {
+  public static raw(): string {
     const version = Guid.gen(1).split('');
     const variant = Guid.gen(1).split('');
     /**
@@ -63,55 +63,53 @@ export class Guid {
      */
     variant[0] = Guid.VARIANTS[Math.floor(Math.random() * Guid.VARIANTS.length)];
     return [Guid.gen(2), Guid.gen(1), version.join(''), variant.join(''), Guid.gen(3)].join('-');
-    }
+  }
 
-    private static gen(count: number): string {
+  private static gen(count: number): string {
     let out: string = '';
-        for (let i: number = 0; i < count; i++) {
-            // tslint:disable-next-line:no-bitwise
-            out += (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-        }
-        return out;
+    for (let i: number = 0; i < count; i++) {
+      // tslint:disable-next-line:no-bitwise
+      out += (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     }
+    return out;
+  }
 
-    private value: string;
+  private value: string;
 
-    private constructor(guid: string) {
+  private constructor(guid: string) {
     if (!guid) {
       throw new TypeError('Invalid argument; `guid` has no value.');
     }
 
-        this.value = Guid.EMPTY;
+    this.value = Guid.EMPTY;
 
-        if (guid && Guid.isGuid(guid)) {
-            this.value = guid;
-        }
+    if (guid && Guid.isGuid(guid)) {
+      this.value = guid;
     }
+  }
 
-    public equals(other: Guid): boolean {
-        // Comparing string `value` against provided `guid` will auto-call
-        // toString on `guid` for comparison
-        return Guid.isGuid(other) && this.value === other.toString();
-    }
+  public equals(other: Guid): boolean {
+    // Comparing string `value` against provided `guid` will auto-call
+    // toString on `guid` for comparison
+    return Guid.isGuid(other) && this.value === other.toString();
+  }
 
-    public isEmpty(): boolean {
-        return this.value === Guid.EMPTY;
-    }
+  public isEmpty(): boolean {
+    return this.value === Guid.EMPTY;
+  }
 
-    public toString(): string {
-        return this.value;
-    }
+  public toString(): string {
+    return this.value;
+  }
 
-    public toObject(): any {
-        return {
+  public toObject(): any {
+    return {
       value: this.value,
     };
-    }
+  }
 
-    public toJSON(): any {
-        console.warn('DEPRECATED: replace calls to guid.toJSON() with toObject()');
-        return this.toObject();
-    }
+  public toJSON(): any {
+    console.warn('DEPRECATED: replace calls to guid.toJSON() with toObject()');
+    return this.toObject();
+  }
 }
-
-
