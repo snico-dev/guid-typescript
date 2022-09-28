@@ -10,7 +10,7 @@ export class Guid {
     }
 
     public static create(): Guid {
-        return new Guid([Guid.gen(2), Guid.gen(1), Guid.gen(1), Guid.gen(1), Guid.gen(3)].join("-"));
+        return new Guid(Guid.raw());
     }
 
     public static createEmpty(): Guid {
