@@ -37,7 +37,7 @@ export class Guid {
     private value: string;
 
     private constructor(guid: string) {
-        if (!guid) { throw new TypeError("Invalid argument; `value` has no value."); }
+        if (!guid) { throw new TypeError("Invalid argument; `guid` has no value."); }
 
         this.value = Guid.EMPTY;
 
