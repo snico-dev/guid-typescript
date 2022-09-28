@@ -39,7 +39,7 @@ export class Guid {
     }
 
     public static createEmpty(): Guid {
-    return new Guid('emptyguid');
+    return new Guid('');
     }
 
     public static parse(guid: string): Guid {
