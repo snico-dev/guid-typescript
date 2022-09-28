@@ -25,7 +25,7 @@ export class Guid {
         return [Guid.gen(2), Guid.gen(1), Guid.gen(1), Guid.gen(1), Guid.gen(3)].join("-");
     }
 
-    private static gen(count: number) {
+    private static gen(count: number): string {
         let out: string = "";
         for (let i: number = 0; i < count; i++) {
             // tslint:disable-next-line:no-bitwise
