@@ -60,10 +60,15 @@ export class Guid {
         return this.value;
     }
 
-    public toJSON(): any {
+    public toObject(): any {
         return {
-            value: this.value,
-        };
+            value: this.value
+        }
+    }
+
+    public toJSON(): any {
+        console.warn('DEPRECATED: replace calls to guid.toJSON() with toObject()');
+        return this.toObject();
     }
 }
 
