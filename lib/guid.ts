@@ -43,7 +43,7 @@ export class Guid {
   }
 
   public static createEmpty(): Guid {
-    return new Guid('');
+    return new Guid(null);
   }
 
   public static parse(guid: string): Guid {
@@ -80,16 +80,15 @@ export class Guid {
 
   private value: string;
 
-  private constructor(guid: string) {
-    if (!guid) {
-      throw new TypeError('Invalid argument; `guid` has no value.');
-    }
-
+  private constructor(guid: string | null) {
+    if (guid === Guid.EMPTY || guid === null) {
     this.value = Guid.EMPTY;
-
-    if (guid && Guid.isGuid(guid)) {
+      return;
+    } else if (guid && Guid.isGuid(guid)) {
       this.value = guid;
+      return;
     }
+    throw new TypeError('Invalid argument; `guid` has no value.');
   }
 
   public equals(other: Guid): boolean {
