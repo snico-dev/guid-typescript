@@ -31,6 +31,10 @@ export class Guid {
 
   public static isGuid(guid: any) {
     const value: string = guid.toString();
+    // This short circuit is added because the validator won't validate the null GUID.
+    if (value === Guid.EMPTY) {
+      return true;
+    }
     return guid && (guid instanceof Guid || Guid.validator.test(value));
   }
 
