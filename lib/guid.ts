@@ -82,7 +82,7 @@ export class Guid {
 
   private constructor(guid: string | null) {
     if (guid === Guid.EMPTY || guid === null) {
-    this.value = Guid.EMPTY;
+      this.value = Guid.EMPTY;
       return;
     } else if (guid && Guid.isGuid(guid)) {
       this.value = guid;
