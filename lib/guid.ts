@@ -10,11 +10,16 @@ export class Guid {
   public static readonly VARIANTS = ['8', '9', 'a', 'b'];
 
   /**
+   * This can be used to test if a string is "GUID-like", which is hexadecimal numbers in an 8-4-4-4-12 pattern.
+   */
+  public static readonly guidLikeValidator = new RegExp("^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$", "i");
+
+  /**
    * Checks for valid hexadecimal notation and ensures that version
    * and variant are valid according to  RFC 4122
    * @see https://www.rfc-editor.org/rfc/rfc4122
    */
-  public static readonly validator = new RegExp(
+  public static readonly v4Validator = new RegExp(
     '^' +
       [
         '[a-z0-9]{8}',
@@ -29,13 +34,18 @@ export class Guid {
 
   public static EMPTY = '00000000-0000-0000-0000-000000000000';
 
-  public static isGuid(guid: any) {
-    const value: string = guid.toString();
+  public static isGuidLike(maybeGuidLike: any): boolean {
+    const stringValue = maybeGuidLike.toString();
+    return Guid.guidLikeValidator.test(stringValue);
+  }
+
+  public static isGuid(maybeGuid: any) {
+    const value: string = maybeGuid.toString();
     // This short circuit is added because the validator won't validate the null GUID.
     if (value === Guid.EMPTY) {
       return true;
     }
-    return guid && (guid instanceof Guid || Guid.validator.test(value));
+    return maybeGuid && (maybeGuid instanceof Guid || Guid.v4Validator.test(value));
   }
 
   public static create(): Guid {

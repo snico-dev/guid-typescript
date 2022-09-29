@@ -61,10 +61,21 @@ describe('Guid test', () => {
     expect(guids.indexOf(Guid.create()) < 0).equal(true);
   });
 
-  it("Should validate when GUID is empty/null guid", ()=>{
+  it('Should validate GUID-like strings with isGuidLike(maybeGuidLike)', () => {
+    const guidLikeStrings = [
+      '26bc913c-eb11-9c0a-1d0b-4ebef6e1487c',
+      '11111111-1111-1111-1111-111111111111',
+    ];
+    guidLikeStrings.forEach((guidLikeString) => {
+      expect(Guid.isGuidLike(guidLikeString)).equal(true);
+      expect(Guid.isGuid(guidLikeString)).equal(false);
+    });
+  });
+
+  it('Should validate when GUID is empty/null guid', () => {
     const empty = '00000000-0000-0000-0000-000000000000';
     expect(Guid.isGuid(empty)).equal(true);
-  })
+  });
 
   it("Should NOT validate when GUID version isn't 4", () => {
     const badGuid = '26bc913c-eb11-9c0a-8d0b-4ebef6e1487c';
