@@ -3,9 +3,9 @@
   "version": "1.0.8",
   "description": "Guid generator to typescript",
   "scripts": {
-    "verify": ".\\node_modules\\.bin\\tslint .\\lib\\**",
+    "verify": "npx tslint .\\lib\\**",
     "test": "npm run verify && mocha -r ts-node/register tests/*.spec.ts",
-    "build": ".\\node_modules\\.bin\\tsc lib/guid -t es3 -m commonjs -d --outDir dist"
+    "build": "npx tsc lib/guid -t es3 -m commonjs -d --outDir dist"
   },
   "author": "nicolas",
   "license": "ISC",
