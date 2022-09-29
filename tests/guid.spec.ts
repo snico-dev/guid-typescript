@@ -72,6 +72,32 @@ describe('Guid test', () => {
     });
   });
 
+  it('Should return an object when toObject/toJSON is called', () => {
+    let guidString = 'c7b15749-0686-493c-9848-6de1734e0624';
+    let guid = Guid.parse(guidString);
+
+    expect(guid.toJSON()).deep.equal({
+      value: guidString,
+    });
+
+    expect(guid.toJSON()).deep.equal({
+      value: guidString,
+    });
+  });
+
+  it('Should throw when parse is called with an invalid GUID', () => {
+    expect(() => {
+      Guid.parse('NOT A VALID GUID');
+    }).throw(TypeError);
+  });
+
+  it('Should have a working isEmpty() instance method', () => {
+    let emptyGuid = Guid.createEmpty();
+    let guid = Guid.create();
+    expect(emptyGuid.isEmpty()).equal(true);
+    expect(guid.isEmpty()).equal(false);
+  });
+
   it('Should validate when GUID is empty/null guid', () => {
     const empty = '00000000-0000-0000-0000-000000000000';
     expect(Guid.isGuid(empty)).equal(true);
